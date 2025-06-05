@@ -8,11 +8,11 @@ void main() {
   Map<String, int> reiseroute = {"Max": 120, "Peter": 90, "Anna": 270, "Lena": 180};
 
   // Auswahl des Transportmittels
-  Transportmittel mittel = Transportmittel.fahrrad; // Standardwert
+  Transportmittel mittel = Transportmittel.bus; // Standardwert
   // Geschwindigekeit fest
   int geschwindigkeit = 0; // km/h
 
-  if (mittel == Transportmittel.auto) {
+/*   if (mittel == Transportmittel.auto) {
     geschwindigkeit = 90; // km/h für Auto
   } else if (mittel == Transportmittel.zug) {
     geschwindigkeit = 120; // km/h für Zug
@@ -20,12 +20,41 @@ void main() {
     geschwindigkeit = 20; // km/h für Fahrrad
   } else if (mittel == Transportmittel.bus) {
     geschwindigkeit = 60; // km/h für Bus
-  }
+  } */
 
   //Eingabe der Geschwindigkeit
   //print("Bitte gib die Geschwindigkeit in km/h ein:");
   //String? eingabe = stdin.readLineSync();
   //int geschwindigkeit = int.parse(eingabe ?? "90");
+
+
+  //Transportmittel-Auswahl über Konsole
+  print("Wähle ein Transportmittel: auto, zug, fahrrad, bus");
+  String? mittelEingabe = stdin.readLineSync();
+
+  switch (mittelEingabe) {
+    case "auto":
+    mittel = Transportmittel.auto;
+    geschwindigkeit = 90;
+    break;
+    case "zug":
+    mittel = Transportmittel.zug;
+    geschwindigkeit = 120;
+    break;
+    case "fahrrad":
+    mittel = Transportmittel.fahrrad;
+    geschwindigkeit = 20;
+    break;
+    case "bus":
+    mittel = Transportmittel.bus;
+    geschwindigkeit = 60;
+    break;
+    default:
+    print("Ungültige Eingabe, Standart: Bus");
+    mittel = Transportmittel.bus;
+    geschwindigkeit = 60;
+  }
+
 
   //Fahrzeitberechnung
   double zeitMax = reiseroute["Max"]! / geschwindigkeit; // Zeit für Max
